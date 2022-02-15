@@ -11,8 +11,21 @@ const updatePeriodError = 3000; //3000ms (3s)
 const interval = 15000; //15000ms (15s)
 let beforePeriod = 0;
 let updateIndex = 0;
-
 let requestBundle = null;
+
+// const myMail = "sky033116";     //메일 주소
+// const myMailPW = "5kp02d015bc-";   //메일 비밀번호
+// const myMailHost = "smtp.naver.com";  
+// const myMailPort = "465"; // 포트번호
+
+// const email = require('emailjs');
+// const emailServer = email.server.connect({
+//     user: myMail,
+//     password: myMailPW,
+//     host: myMailHost,
+//     port: myMailPort,
+//     ssl: true
+// });
 
 app.listen(9900, async() => {
     console.clear();
@@ -101,10 +114,20 @@ async function updatePage(page){
         }
 
         if(isAnythingAvailable){
-            process.stdout.write('\x07');
-            console.log('\x07');
-            console.log("\007");
             require("child_process").exec("powershell.exe [console]::beep(500,700)");
+            require("child_process").exec("powershell.exe [console]::beep(500,700)");
+            require("child_process").exec("powershell.exe [console]::beep(500,700)");
+
+            // var message = {
+            //     text: "수강 신청 자리가 났습니다.",
+            //     from: myMail,
+            //     to: "<zxc91911003@gmail.com, sky033116@naver.com>",
+            //     subject: "수강 신청 자리가 났습니다."
+            // };
+            // emailServer.send(message,function(err,message){
+            //     console.log(err || message); 
+            // });
+
             // const emailjs = require('emailjs');
             // emailjs.init("joftware")
             // var templateParams = { name: 'James', notes: 'Check this out!' }; 
