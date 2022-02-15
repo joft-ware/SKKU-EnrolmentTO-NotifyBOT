@@ -4,7 +4,6 @@ const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 const path = require('path');
 const ejs = require('ejs');
-const beep = require('node-beep');
 const fs = require('fs');
 
 const updatePeriod = 30000; // 30000ms (30s)
@@ -80,10 +79,10 @@ async function updatePage(page){
     console.log("Page Watching #"+updateIndex++ +" ["+new Date().format('yyyy-MM-dd a/p hh:mm:ss')+"]\n\n");
 
     for(let i=0;i<lectureList.length;i++){
-        const elem = cheerio(lectureList[i]);
-        const elemClass = elem.attr('class');
-        if(elemClass.includes("firstrow"))continue;
-        const elemId = elem.attr('id');
+        const elem = cheerio.load(lectureList[i]);
+        const elemClass = $(elem).attr('class');
+        if(elemClass && elemClass.includes("firstrow"))continue;
+        const elemId = $(elem).attr('id');
 
         const haksuNum = $(`#listLecture tr[id="${elemId}"] td[aria-describedby="listLecture_haksu_no"]`);
         let isAnythingAvailable = false;
@@ -100,7 +99,7 @@ async function updatePage(page){
             isAnythingAvailable = isAnythingAvailable | available;
         }
 
-        if(isAnythingAvailable)beep();
+        if(isAnythingAvailable)process.stdout.write('\x07');
     }
 }
 

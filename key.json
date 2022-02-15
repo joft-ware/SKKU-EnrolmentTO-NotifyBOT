@@ -1,9 +1,9 @@
 {
-    "studentID":"학번",
-    "password":"Type ur password",
+    "studentID":"2017311005",
+    "password":"kim2002!",
     "waitingList":[
-        "학수번호",
-        "리스트로",
-        "작성하기"
+        "SWE2021",
+        "SWE3026",
+        "SWE3011"
     ]
 }
