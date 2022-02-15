@@ -100,7 +100,22 @@ async function updatePage(page){
             isAnythingAvailable = isAnythingAvailable | available;
         }
 
-        if(isAnythingAvailable)process.stdout.write('\x07');
+        if(isAnythingAvailable){
+            process.stdout.write('\x07');
+            console.log('\x07');
+            console.log("\007");
+            require("child_process").exec("powershell.exe [console]::beep(500,700)");
+            // const emailjs = require('emailjs');
+            // emailjs.init("joftware")
+            // var templateParams = { name: 'James', notes: 'Check this out!' }; 
+            // emailjs.sendForm('service_t453r4p', 'template_j21ptaq', templateParams) 
+            // .then(function(response) { 
+            //     console.log('SUCCESS!', response.status, response.text); 
+            // }, function(error) 
+            // { console.log('FAILED...', error); 
+            // });
+        }
+
     }
 }
 
