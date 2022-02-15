@@ -1,9 +1,9 @@
 {
     "studentID":"2017311005",
-    "password":"kim2002!",
+    "password":"password",
     "waitingList":[
-        "SWE2021",
-        "SWE3026",
-        "SWE3011"
+        "SWE2021-41",
+        "SWE3026-41",
+        "SWE3011-41"
     ]
 }

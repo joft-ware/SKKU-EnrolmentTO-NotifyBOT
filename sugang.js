@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
-const path = require('path');
-const ejs = require('ejs');
+// const path = require('path');
+// const ejs = require('ejs');
 const fs = require('fs');
 
 const updatePeriod = 30000; // 30000ms (30s)
@@ -46,6 +46,7 @@ async function macro_script(){
         document.querySelector('iframe').contentDocument.querySelector('#btn_login').click();
     }, requestBundle.studentID, requestBundle.password);
 
+    console.log(requestBundle.studentID)
     await updatePage(page);
     let period = getRandom(updatePeriod);
     setInterval(updatePage, period, page);
@@ -82,7 +83,7 @@ async function updatePage(page){
         const elem = cheerio.load(lectureList[i]);
         const elemClass = $(elem).attr('class');
         if(elemClass && elemClass.includes("firstrow"))continue;
-        const elemId = $(elem).attr('id');
+        const elemId = i+1;
 
         const haksuNum = $(`#listLecture tr[id="${elemId}"] td[aria-describedby="listLecture_haksu_no"]`);
         let isAnythingAvailable = false;
